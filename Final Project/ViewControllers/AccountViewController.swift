@@ -13,6 +13,7 @@ import Firebase
 class AccountViewController: UIViewController {
 
 //Variables:
+    var isDefaultImage = true
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var bioTextField: UITextField!
@@ -33,12 +34,15 @@ class AccountViewController: UIViewController {
 //********************************
     
     @IBAction func changeProfilePhoto(_ sender: Any) {
+        
+        
         let alert = UIAlertController(nibName: "Change Profile Photo", bundle: .none)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
         let removeAction = UIAlertAction(title: "Remove", style: .default) { _ in
             self.profileImage.image = UIImage(named: "profileImage")
+            self.isDefaultImage = true
         }
             
         let changePictureAction = UIAlertAction(title: "Change Picture", style: .default) { _ in
@@ -48,7 +52,9 @@ class AccountViewController: UIViewController {
         }
         
         alert.addAction(cancelAction)
-        alert.addAction(removeAction)
+        if !isDefaultImage {
+           alert.addAction(removeAction)
+        }
         alert.addAction(changePictureAction)
         
         present(alert, animated: true, completion: nil)
@@ -99,12 +105,27 @@ class AccountViewController: UIViewController {
     }
     
     @IBAction func LogOutButtonPressed(_ sender: Any) {
+        let user = Auth.auth().currentUser
         do {//Try to sign out -- sets Firebase user to nil
+            if user!.isAnonymous {
+                user?.delete { error in
+                    if let error = error {
+                      print(error.localizedDescription)
+                    }
+                }
+            }
             try Auth.auth().signOut()
             //dismiss current view -- Returns to login storyboard
             self.dismiss(animated: true, completion: nil)
         } catch (let error) {
             print("Auth sign out failed: \(error)")
+        }
+        if user!.isAnonymous {
+            user?.delete { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }
@@ -118,7 +139,7 @@ extension AccountViewController: UIImagePickerControllerDelegate, UINavigationCo
             selectedImage = image
             profileImage.image = image
         }
-        
+        isDefaultImage = false;
         dismiss(animated: true, completion: nil)
     }
 }
@@ -132,6 +153,7 @@ extension AccountViewController: UITextFieldDelegate {
         if textField ==  bioTextField {
            bioTextField.resignFirstResponder()
         }
+        
         return true
     }
 }
