@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wHT-8k-7bp">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeScreenNavigatorID" id="2tX-MS-EmL" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zhS-5C-umE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="md4-2X-LPI" kind="relationship" relationship="viewControllers" id="ZPK-rK-b3b"/>
+                        <segue destination="ckU-KM-u2T" kind="relationship" relationship="viewControllers" id="id3-uu-v1t"/>
+                        <segue destination="Yk7-XT-Gen" kind="relationship" relationship="viewControllers" id="6rm-fL-SsF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLU-p8-xWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1067" y="-161"/>
+        </scene>
+        <!--DayNavigationID-->
+        <scene sceneID="L2d-Ep-QjA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Day" referencedIdentifier="DayNavigationID" id="md4-2X-LPI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Day" image="house" catalog="system" id="R67-4T-RV0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLL-r1-PJN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="769" y="244"/>
+        </scene>
+        <!--WeekNavigationID-->
+        <scene sceneID="i2j-Io-Oe3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Week" referencedIdentifier="WeekNavigationID" id="ckU-KM-u2T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Week" image="calendar.circle" catalog="system" id="fW0-bP-jAO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRA-pZ-ncU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1067" y="244"/>
+        </scene>
+        <!--MonthNavigationID-->
+        <scene sceneID="Kve-FB-bgy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Month" referencedIdentifier="MonthNavigationID" id="Yk7-XT-Gen" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Month" image="calendar" catalog="system" id="7kg-aF-WZe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P3y-Qj-xrb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373" y="244"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="64" height="52"/>
+        <image name="calendar.circle" catalog="system" width="64" height="60"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+    </resources>
+</document>
