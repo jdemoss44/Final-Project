@@ -1,11 +1,3 @@
-//
-//  Post.swift
-//  Demo Project
-//
-//  Created by Josh DeMoss on 12/4/19.
-//  Copyright © 2019 Josh DeMoss. All rights reserved.
-//
-
 import Foundation
 import Firebase
 
