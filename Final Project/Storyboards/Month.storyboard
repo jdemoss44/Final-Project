@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Search-->
+        <scene sceneID="fvY-9K-eDy">
+            <objects>
+                <viewController id="VG2-nV-ZMv" customClass="SearchViewController" customModule="Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KXu-Mi-OyU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPd-5T-0i8">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Title" id="VF8-RH-29t">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dIj-ny-lti">
+                                            <connections>
+                                                <action selector="cancelSearchDidTouch:" destination="VG2-nV-ZMv" id="vTE-Gn-mRo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bPd-5T-0i8" firstAttribute="trailing" secondItem="ppo-7y-YEw" secondAttribute="trailing" id="IBJ-9Z-4Ot"/>
+                            <constraint firstItem="bPd-5T-0i8" firstAttribute="leading" secondItem="ppo-7y-YEw" secondAttribute="leading" id="Lu7-i8-8c0"/>
+                            <constraint firstItem="bPd-5T-0i8" firstAttribute="top" secondItem="ppo-7y-YEw" secondAttribute="top" id="X2v-1l-aAy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ppo-7y-YEw"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="ISh-8k-piy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqW-Qh-KSG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1378" y="1292"/>
+        </scene>
         <!--This Month-->
         <scene sceneID="KR9-ek-BVU">
             <objects>
@@ -18,7 +53,13 @@
                         <viewLayoutGuide key="safeArea" id="TjX-cL-7A6"/>
                     </view>
                     <navigationItem key="navigationItem" title="This Month" id="6ne-QY-L4R">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="tTc-ip-aXJ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="tTc-ip-aXJ">
+                            <connections>
+                                <segue destination="VG2-nV-ZMv" kind="popoverPresentation" popoverAnchorBarButtonItem="tTc-ip-aXJ" id="nke-JX-yue">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="gear" catalog="system" id="13G-gx-OdC">
                             <connections>
                                 <segue destination="ivp-Fh-aSi" kind="show" id="dWx-Hz-p0d"/>

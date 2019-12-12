@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,8 +146,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach PDF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFE-7J-wuX">
-                                <rect key="frame" x="158" y="639" width="98.5" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="164" y="642.5" width="86.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -163,11 +163,8 @@
                                     <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperclip" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4h4-fx-9Ai">
-                                <rect key="frame" x="129" y="642.5" width="21" height="21"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-Us-z7A">
-                                <rect key="frame" x="20" y="122" width="374" height="436"/>
+                                <rect key="frame" x="20" y="122" width="374" height="439.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMH-La-ttq">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
@@ -176,18 +173,18 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Women's Club Lacross Game" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c6A-D0-mQp">
-                                        <rect key="frame" x="0.0" y="21" width="374" height="37"/>
+                                        <rect key="frame" x="0.0" y="21" width="374" height="40.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRs-Wq-PLU">
-                                        <rect key="frame" x="0.0" y="63" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="374" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ElF-FL-M8L">
-                                        <rect key="frame" x="0.0" y="118" width="374" height="16"/>
+                                        <rect key="frame" x="0.0" y="121.5" width="374" height="16"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqw-Y6-cCS">
                                                 <rect key="frame" x="0.0" y="0.0" width="174.5" height="16"/>
@@ -204,7 +201,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9iq-4h-wug">
-                                        <rect key="frame" x="0.0" y="139" width="374" height="34"/>
+                                        <rect key="frame" x="0.0" y="142.5" width="374" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="09/21/20" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6U2-ec-mRq">
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="34"/>
@@ -219,19 +216,19 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQf-zn-p6n">
-                                        <rect key="frame" x="0.0" y="178" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="181.5" width="374" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brief Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vO-9G-g9V">
-                                        <rect key="frame" x="0.0" y="233" width="374" height="16"/>
+                                        <rect key="frame" x="0.0" y="236.5" width="374" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1c7-UV-b4o">
-                                        <rect key="frame" x="0.0" y="254" width="374" height="182"/>
+                                        <rect key="frame" x="0.0" y="257.5" width="374" height="182"/>
                                         <color key="backgroundColor" red="0.94176979567193742" green="0.94176979567193742" blue="0.94176979567193742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -239,6 +236,9 @@
                                     </textView>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="paperclip" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4h4-fx-9Ai">
+                                <rect key="frame" x="135" y="640.5" width="21" height="21"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -249,7 +249,7 @@
                             <constraint firstItem="pIy-Us-z7A" firstAttribute="top" secondItem="mae-8j-fnI" secondAttribute="top" constant="122" id="6HF-ir-2tv"/>
                             <constraint firstItem="pIy-Us-z7A" firstAttribute="centerX" secondItem="35d-O8-9oB" secondAttribute="centerX" id="D5j-dF-Py5"/>
                             <constraint firstItem="pIy-Us-z7A" firstAttribute="leading" secondItem="mae-8j-fnI" secondAttribute="leading" constant="20" id="DtC-Dc-xfI"/>
-                            <constraint firstItem="maT-DN-Geb" firstAttribute="top" secondItem="4h4-fx-9Ai" secondAttribute="bottom" priority="750" constant="40" id="GRk-Gc-cp8"/>
+                            <constraint firstItem="maT-DN-Geb" firstAttribute="top" secondItem="4h4-fx-9Ai" secondAttribute="bottom" priority="750" constant="42" id="Ix6-vk-cmD"/>
                             <constraint firstItem="wFE-7J-wuX" firstAttribute="centerX" secondItem="35d-O8-9oB" secondAttribute="centerX" id="W2Y-bo-Kcm"/>
                             <constraint firstItem="maT-DN-Geb" firstAttribute="top" secondItem="wFE-7J-wuX" secondAttribute="bottom" priority="750" constant="40" id="Z51-gm-NYZ"/>
                             <constraint firstItem="mae-8j-fnI" firstAttribute="trailing" secondItem="pIy-Us-z7A" secondAttribute="trailing" constant="20" id="jyV-eb-8cV"/>

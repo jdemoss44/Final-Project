@@ -26,6 +26,7 @@
 		1873A10E23A0320E001811C7 /* Month.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1873A10D23A0320E001811C7 /* Month.storyboard */; };
 		1873A11023A05048001811C7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873A10F23A05048001811C7 /* AccountViewController.swift */; };
 		18B582A723A08A3A009375DA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B582A623A08A3A009375DA /* MenuViewController.swift */; };
+		18C8DB0423A1E0FA00950235 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8DB0323A1E0FA00950235 /* SearchViewController.swift */; };
 		18FD9F1923A150F100AFB0B9 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FD9F1823A150F100AFB0B9 /* Menu.storyboard */; };
 		62FBF5C7BA3AD97CF9972733 /* Pods_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ACF288DE275611CBB3AC4E /* Pods_Final_Project.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		1873A10D23A0320E001811C7 /* Month.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Month.storyboard; sourceTree = "<group>"; };
 		1873A10F23A05048001811C7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18B582A623A08A3A009375DA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		18C8DB0323A1E0FA00950235 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		18FD9F1823A150F100AFB0B9 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		97A9122BFF2A9CAE77058F4C /* Pods-Final Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Project.debug.xcconfig"; path = "Target Support Files/Pods-Final Project/Pods-Final Project.debug.xcconfig"; sourceTree = "<group>"; };
 		D5BCD7612DA8C2982D7F1D98 /* Pods-Final Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Project.release.xcconfig"; path = "Target Support Files/Pods-Final Project/Pods-Final Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				1832B75F23A0100E00838009 /* LoginViewController.swift */,
 				1873A10F23A05048001811C7 /* AccountViewController.swift */,
 				1873A0FC23A02B40001811C7 /* WeekViewController.swift */,
+				18C8DB0323A1E0FA00950235 /* SearchViewController.swift */,
 				1873A0FE23A02B49001811C7 /* MonthViewController.swift */,
 				18B582A623A08A3A009375DA /* MenuViewController.swift */,
 				1873A10023A02B5C001811C7 /* DayTableViewController.swift */,
@@ -284,6 +287,7 @@
 				1832B76023A0100E00838009 /* LoginViewController.swift in Sources */,
 				18B582A723A08A3A009375DA /* MenuViewController.swift in Sources */,
 				1873A10323A02B6A001811C7 /* DiscoverTableViewController.swift in Sources */,
+				18C8DB0423A1E0FA00950235 /* SearchViewController.swift in Sources */,
 				1873A10123A02B5C001811C7 /* DayTableViewController.swift in Sources */,
 				1873A11023A05048001811C7 /* AccountViewController.swift in Sources */,
 				1832B77723A012D900838009 /* Posts.swift in Sources */,
