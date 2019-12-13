@@ -2,13 +2,17 @@ import Foundation
 import Firebase
 
 struct Post {
-    var topic: String
-    var info: String
+    var title: String
+    var date: String
+    var time: String
+    var description: String
     var addedByUser: String
     
-    init(topic: String, info: String, addedByUser: String) {
-        self.topic = topic
-        self.info = info
+    init(title: String, date: String, time: String, description: String, addedByUser: String) {
+        self.title = title
+        self.date = date
+        self.time = time
+        self.description = description
         self.addedByUser = addedByUser
     }
     
@@ -17,22 +21,27 @@ struct Post {
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            
-            let topic = value["topic"] as? String,
-            let addedByUser = value["addedByUser"] as? String,
-            let info = value["info"] as? String
+            let title = value["title"] as? String,
+            let date = value["date"] as? String,
+            let time = value["time"] as? String,
+            let description = value["description"] as? String,
+            let addedByUser = value["addedByUser"] as? String
             else { return nil }
         
-        self.topic = topic
-        self.info = info
+        self.title = title
+        self.date = date
+        self.time = time
+        self.description = description
         self.addedByUser = addedByUser
     }
     
-    //Functiion to translate post info into storable format
+    //Functiion to translate post date into storable format
     func toAnyObject() -> Any {
       return [
-        "topic": topic,
-        "info": info,
+        "title": title,
+        "date": date,
+        "time": time,
+        "description": description,
         "addedByUser": addedByUser
       ]
     }

@@ -1,81 +1,109 @@
 //
-//  DayTableViewController.swift
-//  Final Project
+//  FeedTableViewController.swift
+//  Demo Project
 //
-//  Created by Josh DeMoss on 12/10/19.
+//  Created by Josh DeMoss on 12/4/19.
 //  Copyright © 2019 Josh DeMoss. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class DayTableViewController: UITableViewController {
+//Task 8: Sign out (button function)
 
+class DayTableViewController: UITableViewController {
+    
+    var posts: [Post] = []
+    var user: User!
+    
+    //connecting to firebase
+//    let approvedRef = Database.database().reference(withPath: "posts/approved")
+    let approvedRef = Database.database().reference(withPath: "posts/requests")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //initialize the user
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let curUser = user else { return }
+            
+            let userRef = Database.database().reference(withPath: "users/\(curUser.uid)")
+        
+            userRef.observe( .value, with: { snapshot in
+                self.user = User(snapshot: snapshot)
+            })
+            
+        }
+        
+        //Retrieving Posts from the Database
+        approvedRef.observe(.value, with: { snapshot in
+            var newPosts: [Post] = []
+            for uid in snapshot.children {
+                if let title = uid as? DataSnapshot {
+                    for curPost in title.children {
+                        if let realSnapshot = curPost as? DataSnapshot,
+                            let post = Post(snapshot: realSnapshot){
+                            print(post.title)
+                            newPosts.append(post)
+                        }
+                    }
+                }
+            }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+            self.posts = newPosts
+            self.tableView.reloadData()
+        })
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 250
+       
     }
 
-    // MARK: - Table view data source
+//*************************************************
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    //Used for creating cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return posts.count
     }
-
-    /*
+    
+    //Creates cells using internal array of posts
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as UITableViewCell
 
-        // Configure the cell...
-
+        let post = posts[indexPath.row]
+        
+//        let profileImage = cell.imageView
+//        profileImage!.layer.cornerRadius = 50
+//        profileImage!.clipsToBounds = true
+//        profileImage?.image = UIImage(named: "profileImage")!
+        
+        let titleLabel = cell.viewWithTag(101) as! UILabel
+        let dateLabel = cell.viewWithTag(102) as! UILabel
+        let timeLabel = cell.viewWithTag(103) as! UILabel
+        let addedByUser = cell.viewWithTag(104) as! UILabel
+        let descriptionTextView = cell.viewWithTag(105) as! UILabel
+    
+        titleLabel.text = post.title
+        dateLabel.text = post.date
+        timeLabel.text = post.time
+        let userNameRef = Database.database().reference(withPath: "users/\(post.addedByUser)")
+        userNameRef.observeSingleEvent(of: .value, with: { (snapshot) in
+          let value = snapshot.value as! NSDictionary
+          let username = value["username"] as? String
+            addedByUser.text = username
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        addedByUser.text = post.addedByUser
+        descriptionTextView.text = post.description
+        
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    @IBAction func discoverButtonDidTouch(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoToDiscover", sender: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    
 
 }

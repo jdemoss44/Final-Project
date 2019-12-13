@@ -2,53 +2,74 @@
 //  CreatePostViewController.swift
 //  Final Project
 //
-//  Created by user157827 on 12/12/19.
+//  Created by Josh DeMoss on 12/11/19.
 //  Copyright © 2019 Josh DeMoss. All rights reserved.
 //
-
+ 
 import UIKit
-
+import Firebase
+ 
 class CreatePostViewController: UIViewController {
-    
-    
-    @IBOutlet var titleTextField: UITextField!
-    
+ 
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    
     @IBOutlet weak var timeTextField: UITextField!
-    
     @IBOutlet weak var descriptionTextView: UITextView!
     
-    
-    
-    
-
-    
+    let requestRef = Database.database().reference(withPath: "posts/requests")
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleTextField.delegate = self
-        dateTextField.delegate = self
-        timeTextField.delegate = self
-        descriptionTextView.delegate = self
-            
-        
-
+ 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+ 
+    @IBAction func submitRequestDidTouch(_ sender: Any) {
+        if titleTextField.text!.count < 1 {
+             presentAlert("Invalid Title", "Title cannot be empty")
+            return
+        }
+        if dateTextField.text!.count < 1 {
+             presentAlert("Invalid Date", "Date cannot be empty")
+            return
+        } else if dateTextField.text!.count != 8 {
+            presentAlert("Invalid Date Input", "Expected format: mm/dd/year")
+            return
+        }
+        if timeTextField.text!.count < 1 {
+             presentAlert("Invalid Time", "Time cannot be empty")
+            return
+        }
+        if descriptionTextView.text!.count < 1 {
+             presentAlert("Invalid Input", "Description cannot be empty")
+            return
+        }
+        
+        let user = Auth.auth().currentUser!
+        if user.isAnonymous {
+            presentAlert("Post Request Error", "Anonymous Users Cannot Create Events")
+            return
+        }
+        
+        let post = Post(title: titleTextField.text!, date: dateTextField.text!, time: timeTextField.text!, description: descriptionTextView.text!, addedByUser: user.uid)
+        let postRef = requestRef.child("\(user.uid)/\(post.title)")
+        
+        postRef.setValue(post.toAnyObject())
+        presentAlert("Submited Request", "Please wait for the SAO's response")
+        titleTextField.text = ""
+        dateTextField.text = ""
+        timeTextField.text = ""
+        descriptionTextView.text = ""
+        
+        
     }
-    */
+    
+    func presentAlert(_ title: String, _ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
-    
 
 extension CreatePostViewController : UITextFieldDelegate{
         

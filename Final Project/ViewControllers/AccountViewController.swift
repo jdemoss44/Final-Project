@@ -20,6 +20,9 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var emailTextField: UILabel!
     var selectedImage: UIImage?
     
+    var user: User!
+    
+    
 //View Did Load:
 //**********************************
     
@@ -28,6 +31,38 @@ class AccountViewController: UIViewController {
         profileImage.layer.cornerRadius = 50
         profileImage.clipsToBounds = true
         // Do any additional setup after loading the view.
+        if !Auth.auth().currentUser!.isAnonymous {
+            let curUser = Auth.auth().currentUser
+            guard curUser != nil else {
+                return
+            }
+            let userRef = Database.database().reference(withPath: "users/\(curUser!.uid)")
+            userRef.observe( .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as! NSDictionary
+                let username = value["username"] as? String
+                let bio = value["bio"] as? String
+                let email = value["email"] as? String
+                self.userNameTextField.text = username
+                self.bioTextField.text = bio
+                self.emailTextField.text = email
+
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+        //initializing user
+        Auth.auth().addStateDidChangeListener { auth, user in
+            guard let curUser = user else { return }
+            
+            let userRef = Database.database().reference(withPath: "users/\(curUser.uid)")
+        
+            userRef.observe( .value, with: { snapshot in
+                self.user = User(snapshot: snapshot)
+            })
+        }
     }
 
 //FUNCTIONS:
@@ -46,9 +81,9 @@ class AccountViewController: UIViewController {
         }
             
         let changePictureAction = UIAlertAction(title: "Change Picture", style: .default) { _ in
-            let pickerController = UIImagePickerController()
-            pickerController.delegate = self
-            self.present(pickerController, animated: true, completion: nil)
+                let pickerController = UIImagePickerController()
+                pickerController.delegate = self
+                self.present(pickerController, animated: true, completion: nil)
         }
         
         alert.addAction(cancelAction)
@@ -60,49 +95,6 @@ class AccountViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    //Add function to save changes
-    
-    @IBAction func newClubAccount(_ sender: Any) {
-        let alert = UIAlertController(title: "Register", message: "Register", preferredStyle: .alert)
-        
-        alert.addTextField { textUserName in
-            textUserName.placeholder = "User Name"
-        }
-        alert.addTextField { textEmail in
-            textEmail.placeholder = "Email"
-        }
-        alert.addTextField { textPassword in
-            textPassword.isSecureTextEntry = true
-            textPassword.placeholder = "Password"
-        }
-            
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-
-            let userNameField = alert.textFields![0]
-            let emailField = alert.textFields![1]
-            let passwordField = alert.textFields![2]
-                
-            //firebase part:
-            Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) { user, error in
-                if error == nil, user != nil {
-                    let curUser = User(userName: userNameField.text!, email: user!.user.email!, uid: user!.user.uid)
-                        
-                    let userRef = Database.database().reference(withPath: "users/\(curUser.uid)")
-                    userRef.setValue(curUser.userToAny())
-                } else {
-                    print("Error with Create User")
-                }
-            }
-        }
-
-        //Add the two actions to the alert
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        //present the alert
-        present(alert, animated: true, completion: nil)
-    }
     
     @IBAction func LogOutButtonPressed(_ sender: Any) {
         let user = Auth.auth().currentUser
@@ -127,6 +119,41 @@ class AccountViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func saveChangesDidTouch(_ sender: Any) {
+//        let user = Auth.auth().currentUser!
+        //saving the change to the user profile image
+//        let storageRef = Storage.storage().reference(withPath: "\(user.uid)/images/profile_image")
+//        if let profileImage = selectedImage,
+//            let imageData = profileImage.jpegData(compressionQuality: 0.1) {
+
+            // Upload the file to the path
+//            storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+//                storageRef.downloadURL { (url, error) in
+//                    guard let downloadURL = url else {
+//                        print("error with downloadURL")
+//                        return
+//                    }
+//                    let profileImageRef = Database.database().reference(withPath: "users/\(user.uid)/images/profile_image")
+//                    profileImageRef.setValue(["profile_image": downloadURL.absoluteString])
+        
+//                }
+//            }
+//        }
+        user.userName = userNameTextField.text!
+        user.bio = bioTextField.text!
+        let userRef = Database.database().reference(withPath: "users/\(user.uid)")
+        userRef.setValue(user.userToAny())
+        
+        presentAlert("Changes Saved", "Events Updated with New Information")
+        
+    }
+    
+    func presentAlert(_ title: String, _ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 //EXTENSIONS:

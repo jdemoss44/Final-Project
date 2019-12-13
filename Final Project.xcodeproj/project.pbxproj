@@ -25,6 +25,8 @@
 		1873A10C23A031ED001811C7 /* Week.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1873A10B23A031ED001811C7 /* Week.storyboard */; };
 		1873A10E23A0320E001811C7 /* Month.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1873A10D23A0320E001811C7 /* Month.storyboard */; };
 		1873A11023A05048001811C7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873A10F23A05048001811C7 /* AccountViewController.swift */; };
+		188A278323A3556B0092C669 /* PendingRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A278223A3556B0092C669 /* PendingRequestsViewController.swift */; };
+		188A278523A3B1220092C669 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188A278423A3B1220092C669 /* Discover.storyboard */; };
 		18B582A723A08A3A009375DA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B582A623A08A3A009375DA /* MenuViewController.swift */; };
 		18FD9F1923A150F100AFB0B9 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FD9F1823A150F100AFB0B9 /* Menu.storyboard */; };
 		3BE63DD423A32FAC005E975E /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */; };
@@ -52,6 +54,8 @@
 		1873A10B23A031ED001811C7 /* Week.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Week.storyboard; sourceTree = "<group>"; };
 		1873A10D23A0320E001811C7 /* Month.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Month.storyboard; sourceTree = "<group>"; };
 		1873A10F23A05048001811C7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		188A278223A3556B0092C669 /* PendingRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsViewController.swift; sourceTree = "<group>"; };
+		188A278423A3B1220092C669 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		18B582A623A08A3A009375DA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18FD9F1823A150F100AFB0B9 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */,
 				1873A0FC23A02B40001811C7 /* WeekViewController.swift */,
 				1873A0FE23A02B49001811C7 /* MonthViewController.swift */,
+				188A278223A3556B0092C669 /* PendingRequestsViewController.swift */,
 				18B582A623A08A3A009375DA /* MenuViewController.swift */,
 				1873A10023A02B5C001811C7 /* DayTableViewController.swift */,
 				1873A10223A02B6A001811C7 /* DiscoverTableViewController.swift */,
@@ -129,6 +134,7 @@
 				1873A10923A031B8001811C7 /* Day.storyboard */,
 				1873A10B23A031ED001811C7 /* Week.storyboard */,
 				1873A10D23A0320E001811C7 /* Month.storyboard */,
+				188A278423A3B1220092C669 /* Discover.storyboard */,
 				18FD9F1823A150F100AFB0B9 /* Menu.storyboard */,
 			);
 			path = Storyboards;
@@ -227,6 +233,7 @@
 				1832B77023A0112300838009 /* GoogleService-Info.plist in Resources */,
 				1832B76523A0100F00838009 /* Assets.xcassets in Resources */,
 				1832B76323A0100E00838009 /* Login.storyboard in Resources */,
+				188A278523A3B1220092C669 /* Discover.storyboard in Resources */,
 				1873A10E23A0320E001811C7 /* Month.storyboard in Resources */,
 				1873A10A23A031B8001811C7 /* Day.storyboard in Resources */,
 			);
@@ -291,6 +298,7 @@
 				1873A11023A05048001811C7 /* AccountViewController.swift in Sources */,
 				1832B77723A012D900838009 /* Posts.swift in Sources */,
 				1832B75C23A0100E00838009 /* AppDelegate.swift in Sources */,
+				188A278323A3556B0092C669 /* PendingRequestsViewController.swift in Sources */,
 				3BE63DD423A32FAC005E975E /* CreatePostViewController.swift in Sources */,
 				1832B75E23A0100E00838009 /* SceneDelegate.swift in Sources */,
 			);

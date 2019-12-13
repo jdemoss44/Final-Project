@@ -17,27 +17,63 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class User {
     var profileImage: UIImage?
     var userName: String
-    let email: String
-    let uid: String
+    var email: String
+    var bio: String
+    var uid: String
 
     init(userName: String , email: String, uid: String) {
+        profileImage = UIImage(named: "profileImage")
+        self.bio = ""
         self.userName = userName
         self.uid = uid
         self.email = email
     }
     
-    //In order to store information in the database it has to be in
-    //a json format. This function turns the variables of a User class
-    //into the appropriate format to be stored.
+    init?(snapshot: DataSnapshot) {
+        guard
+            let value = snapshot.value as? [String: AnyObject],
+            let userName = value["username"] as? String,
+            let email = value["email"] as? String,
+            let bio = value["bio"] as? String,
+            let uid = value["uid"] as? String
+            else { return nil}
+        
+        self.profileImage = UIImage(named: "profileImage")
+        self.userName = userName
+        self.email = email
+        self.bio = bio
+        self.uid = uid
+        
+        if value["profile_image"] != nil {
+            // Create a reference to the file you want to download
+            let profileImageRef = Storage.storage().reference(withPath: "\(uid)/images/profile_image")
+
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            profileImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+              if let error = error {
+                print(error.localizedDescription)
+              } else {
+                // Data for "images/island.jpg" is returned
+                let image = UIImage(data: data!)
+                self.profileImage = image
+                }
+            }
+            
+        }
+        
+    }
+
     func userToAny() -> Any {
       return [
         "username": userName,
-        "uid": uid,
-        "email": email
+         "email": email,
+         "bio": bio,
+        "uid": uid
       ]
     }
 }

@@ -19,12 +19,30 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        let user = Auth.auth().currentUser
+        if user != nil {
+            do {
+                if user!.isAnonymous {
+                    user?.delete { error in
+                        if let error = error {
+                          print(error.localizedDescription)
+                        }
+                    }
+                }
+                try Auth.auth().signOut()
+                //dismiss current view -- Returns to login storyboard
+                self.dismiss(animated: true, completion: nil)
+            } catch (let error) {
+                print("Auth sign out failed: \(error)")
+            }
+        }
         
         //This will perform the following code when a user signs in.
         //(When a user signs in it will perform the segue)
         Auth.auth().addStateDidChangeListener() { auth, user in
           if user != nil {
+            print(user!.isAnonymous)
+            print(user!.email as Any)
             self.performSegue(withIdentifier: "GoToMainNavigator", sender: nil)
             self.textFieldLoginEmail.text = nil
             self.textFieldLoginPassword.text = nil
