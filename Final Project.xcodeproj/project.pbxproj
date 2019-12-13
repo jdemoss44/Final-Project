@@ -27,6 +27,7 @@
 		1873A11023A05048001811C7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873A10F23A05048001811C7 /* AccountViewController.swift */; };
 		18B582A723A08A3A009375DA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B582A623A08A3A009375DA /* MenuViewController.swift */; };
 		18FD9F1923A150F100AFB0B9 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18FD9F1823A150F100AFB0B9 /* Menu.storyboard */; };
+		3BE63DD423A32FAC005E975E /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */; };
 		62FBF5C7BA3AD97CF9972733 /* Pods_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ACF288DE275611CBB3AC4E /* Pods_Final_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		1873A10F23A05048001811C7 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		18B582A623A08A3A009375DA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		18FD9F1823A150F100AFB0B9 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
+		3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		97A9122BFF2A9CAE77058F4C /* Pods-Final Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Project.debug.xcconfig"; path = "Target Support Files/Pods-Final Project/Pods-Final Project.debug.xcconfig"; sourceTree = "<group>"; };
 		D5BCD7612DA8C2982D7F1D98 /* Pods-Final Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Project.release.xcconfig"; path = "Target Support Files/Pods-Final Project/Pods-Final Project.release.xcconfig"; sourceTree = "<group>"; };
 		F6ACF288DE275611CBB3AC4E /* Pods_Final_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 			children = (
 				1832B75F23A0100E00838009 /* LoginViewController.swift */,
 				1873A10F23A05048001811C7 /* AccountViewController.swift */,
+				3BE63DD323A32FAC005E975E /* CreatePostViewController.swift */,
 				1873A0FC23A02B40001811C7 /* WeekViewController.swift */,
 				1873A0FE23A02B49001811C7 /* MonthViewController.swift */,
 				18B582A623A08A3A009375DA /* MenuViewController.swift */,
@@ -288,6 +291,7 @@
 				1873A11023A05048001811C7 /* AccountViewController.swift in Sources */,
 				1832B77723A012D900838009 /* Posts.swift in Sources */,
 				1832B75C23A0100E00838009 /* AppDelegate.swift in Sources */,
+				3BE63DD423A32FAC005E975E /* CreatePostViewController.swift in Sources */,
 				1832B75E23A0100E00838009 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
