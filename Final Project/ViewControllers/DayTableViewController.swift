@@ -49,7 +49,7 @@ class DayTableViewController: UITableViewController {
                     }
                 }
             }
-
+            newPosts.sort(by: { $0.date <  $1.date })
             self.posts = newPosts
             self.tableView.reloadData()
         })

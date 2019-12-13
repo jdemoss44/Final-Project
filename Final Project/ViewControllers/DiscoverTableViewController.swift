@@ -26,6 +26,8 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         searchBar.delegate = self
         filteredData = posts
         //initialize the user
@@ -53,6 +55,7 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
                 }
             }
 
+            newPosts.sort(by: { $0.date <  $1.date })
             self.posts = newPosts
             self.tableView.reloadData()
         })
@@ -60,6 +63,10 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
         tableView.estimatedRowHeight = 250
     }
 
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     //gets rid of view
     @IBAction func cancelSearchDidTouch(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -72,7 +79,7 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
     override  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as UITableViewCell
-        cell.textLabel?.text = filteredData[indexPath.row].title
+        
         let post = posts[indexPath.row]
                 
         //        let profileImage = cell.imageView
@@ -110,7 +117,8 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
         // Use the filter method to iterate over all items in the data array
         // For each item, return true if the item should be included and false if the
         // item should NOT be included
-        filteredData = searchText.isEmpty ? posts : posts.filter { (item: Post) -> Bool in
+        filteredData = searchText.isEmpty ? posts : posts.filter {
+            (item: Post) -> Bool in
             // If dataItem matches the searchText, return true to include it
             return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
@@ -131,5 +139,6 @@ class DiscoverTableViewController: UITableViewController, UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
-
 }
+
+

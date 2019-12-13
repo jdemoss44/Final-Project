@@ -19,10 +19,31 @@ class CreatePostViewController: UIViewController {
     let requestRef = Database.database().reference(withPath: "posts/requests")
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        titleTextField.delegate = self
+        dateTextField.delegate = self
+        timeTextField.delegate = self
+        descriptionTextView.delegate = self
         // Do any additional setup after loading the view.
     }
  
+    @objc func keyboardWillShow(sender: NSNotification) {
+         self.view.frame.origin.y = -150 // Move view 150 points upward
+    }
+
+    @objc func keyboardWillHide(sender: NSNotification) {
+         self.view.frame.origin.y = 0 // Move view to original position
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @IBAction func submitRequestDidTouch(_ sender: Any) {
         if titleTextField.text!.count < 1 {
              presentAlert("Invalid Title", "Title cannot be empty")
